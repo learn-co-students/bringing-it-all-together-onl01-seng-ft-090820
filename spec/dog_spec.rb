@@ -115,7 +115,7 @@ describe "Dog" do
       dog2 = Dog.create(name: 'teddy', breed: 'pug')
 
       dog_from_db = Dog.find_or_create_by({name: 'teddy', breed: 'cockapoo'})
-
+      
       expect(dog_from_db.id).to eq(1)
       expect(dog_from_db.id).to eq(dog1.id)
     end
@@ -146,6 +146,7 @@ describe "Dog" do
     it 'updates the record associated with a given instance' do
       teddy.save
       teddy.name = "Teddy Jr."
+      
       teddy.update
       teddy_jr = Dog.find_by_name("Teddy Jr.")
       expect(teddy_jr.id).to eq(teddy.id)
